@@ -89,13 +89,13 @@ module SimpleNavigationRenderers
         link_options[:"data-toggle"] = "dropdown"
         link_options[:"data-hover"] = "dropdown"
         link_options[:"data-target"] = "#"
-
+        
         content = link_to( name, "#", link_options ) + render_sub_navigation_for(item)
         content_tag(:li, content, options)
       end
 
       def caret
-        content_tag(:b, '', class: "caret")
+        content_tag(:span, '', class: "caret")
       end
 
       def dropdown_submenu_link
