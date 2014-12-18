@@ -84,10 +84,9 @@ module SimpleNavigationRenderers
       end
 
       def dropdown_part( name )
-        options[:class] = [ options[:class], "dropdown" ].flatten.compact.join(' ')
+        options[:class] = [ options[:class], "dropdown dropdown-hover" ].flatten.compact.join(' ')
         link_options[:class] = [ link_options[:class], "dropdown-toggle" ].flatten.compact.join(' ')
         link_options[:"data-toggle"] = "dropdown"
-        link_options[:"data-hover"] = "dropdown"
         link_options[:"data-target"] = "#"
         
         content = link_to( name.html_safe, "#", link_options ) + render_sub_navigation_for(item)
