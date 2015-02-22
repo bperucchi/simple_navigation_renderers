@@ -65,7 +65,7 @@ module SimpleNavigationRenderers
             content_tag(:li, dropdown_submenu_link, options)
           end
         else
-          content_tag(:li, simple_link, options)
+          content_tag(:li, simple_link, options.include?(:class) ? options : options.merge(class: 'hover'))
         end
       end
 
@@ -84,7 +84,8 @@ module SimpleNavigationRenderers
       end
 
       def dropdown_part( name )
-        options[:class] = [ options[:class], "dropdown dropdown-hover" ].flatten.compact.join(' ')
+        options[:class] = [ options[:class], "hsub hover" ].flatten.compact.join(' ')
+        # options[:class] = [ options[:class], "dropdown dropdown-hover" ].flatten.compact.join(' ')
         link_options[:class] = [ link_options[:class], "dropdown-toggle" ].flatten.compact.join(' ')
         link_options[:"data-toggle"] = "dropdown"
         link_options[:"data-target"] = "#"

@@ -23,9 +23,9 @@ module SimpleNavigationRenderers
 
       def container_class( level )
         if level == 1
-          "nav" + ((options[:bv] == 3) ? ' navbar-nav' : '')
+          "nav" + ((options[:bv] == 3) ? ' nav-list' : '')
         else
-          "dropdown-menu"
+          "submenu can-scroll"
         end
       end
 
@@ -33,7 +33,7 @@ module SimpleNavigationRenderers
         sn_config = SimpleNavigation.config
         config_selected_class = sn_config.selected_class
         config_name_generator = sn_config.name_generator
-        sn_config.selected_class = "active"
+        sn_config.selected_class = "active hover"
         # name_generator should be proc (not lambda or method) to be compatible with earlier versions of simple-navigation
         sn_config.name_generator = proc do | name, item |
           config_name_generator.call( prepare_name(name), item )
@@ -51,7 +51,9 @@ module SimpleNavigationRenderers
         if name.instance_of?(Hash)
           if name[:icon]
             icon_options = {class: name[:icon], title: name[:title]}.reject { |_, v| v.nil? }
-            content_tag(:span, '', icon_options) + ' ' + (name[:text] || '')
+            # content_tag(:span, '', icon_options) + ' ' + (name[:text] || '')
+            content_tag(:i, '', icon_options) +
+            content_tag(:span, (name[:text] || ''))
           else
             name[:text] || (raise SimpleNavigationRenderers::InvalidHash)
           end
