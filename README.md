@@ -1,3 +1,16 @@
+# Example to configurate for Ace layout Nav List (bootstrap) by me 
+
+```ruby
+primary.item :dashboard, {icon: "menu-icon menu-icon fa fa-desktop", text: t(:dashboard, scope: 'navigate')}, dashboard_path 
+primary.item :ledgers, {icon: "menu-icon glyphicon glyphicon-plus", text: t(:ledgers, scope: 'navigate')} do |ledger|
+  ledger.item :credits, {icon: "menu-icon fa fa-caret-right", text: t(:credits, scope: 'navigate')}, ledgers_path(ledger: 'credits')
+  ledger.item :debits, {icon: "menu-icon fa fa-caret-right", text: t(:debits, scope: 'navigate')}, ledgers_path(ledger: 'debits')
+  ledger.item :store_debits, {icon: "menu-icon fa fa-caret-right", text: t(:store_debits, scope: 'navigate')}, ledgers_path(ledger: 'store_debits')
+end
+```
+
+### Default readme by developer
+
 # SimpleNavigationRenderers
 
 [![Gem Version](https://badge.fury.io/rb/simple_navigation_renderers.png)](http://badge.fury.io/rb/simple_navigation_renderers)
