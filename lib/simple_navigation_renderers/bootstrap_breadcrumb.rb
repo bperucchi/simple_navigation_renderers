@@ -13,7 +13,6 @@ module SimpleNavigationRenderers
     def li_tags(item_container)
       item_container.items.each_with_object([]) do |item, list|
         next unless item.selected?
-
         if include_sub_navigation?(item)
           options = { method: item.method }.merge(item.html_options.except(:class, :id))
           list << unless item.url
